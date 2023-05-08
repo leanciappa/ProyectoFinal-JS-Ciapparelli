@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerCert | Sistema de gestión de certificaciones</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-
 </head>
 <body class="bg-dark">
     <header>
@@ -42,24 +41,27 @@
         <h1 class="text-white fs-2">Gestión de procesos</h1>
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-secondary m-2 p-1" data-bs-toggle="modal" data-bs-target="#agregar" id="btnAgregar">Agregar</button>
-            <button type="button" class="btn btn-secondary m-2 p-1" data-bs-toggle="modal" data-bs-target="#quitar" >Quitar</button>
             <button type="button" class="btn btn-secondary m-2 p-1" data-bs-toggle="modal" data-bs-target="#modificar">Modificar</button>
             <button type="button" class="btn btn-secondary m-2 p-1" data-bs-toggle="modal" data-bs-target="#buscar">Buscar</button>
         </div>
         <div>
-            <table class="table table-dark table-hover">
-                <tr class="table-dark">
+            <table class="table table-dark table-hover" id="tablaGestiones">
+              <thead>
+                  <tr class="table-dark">
                     <td class="table-dark">Cliente</td>
                     <td class="table-dark">CUIT</td>
-                    <td class="table-dark">Certificado</td>
-                    <td class="table-dark">Marca</td>
-                    <td class="table-dark">Modelo</td>
-                    <td class="table-dark">Origen</td>
-                    <td class="table-dark">Descripción</td>
-                    <td class="table-dark">Vencimiento</td>
-                    <td class="table-dark">Gestión</td>
+                    <td class="table-dark" >Certificado</td>
+                    <td class="table-dark" >Marca</td>
+                    <td class="table-dark" >Modelo</td>
+                    <td class="table-dark" >Origen</td>
+                    <td class="table-dark" >Descripción</td>
+                    <td class="table-dark" >Vencimiento</td>
+                    <td class="table-dark" >Gestión</td>
+                    <td class="table-dark" >Estado</td>
                     <td class="table-dark"></td>
-                </tr>
+                  </tr>
+              </thead>
+              <tbody id="tbody">
                 <tr class="table-dark">
                     <td class="table-dark">Leandro</td> 
                     <td class="table-dark">20345096974</td>
@@ -68,13 +70,14 @@
                     <td class="table-dark">papirri</td>
                     <td class="table-dark">china</td>
                     <td class="table-dark">Fuente de alimentación</td>
-                    <td class="table-dark">10/02/2023</td>                                                                                                                                                                                                                    <td class="table-dark">
-                    <td>  
-                      <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                      </div>
+                    <td class="table-dark">10/02/2023</td>
+                    <td class="table-dark">Certificacion</td>
+                    <td class="table-dark">Certificadora</td>                     
+                    <td class="table-dark">
+                      <button type="button" class="btn btn-secondary m-2 p-1">Quitar</button>                     
                     </td>
                 </tr>
+              </tbody>
               </table>
         </div>
     </main>
@@ -90,22 +93,22 @@
           </div>
         <div class="modal-body d-flex flex-column">
         <p class="m-0 p-0">Cliente</p>
-        <input type="text" class="w-100">
+        <input type="text" class="w-100" id="cliente">
         <p class="m-0 p-0">CUIT</p>
-        <input type="text" class="w-100 justify-content-center">
+        <input type="text" class="w-100" id="cuit">
         <p class="m-0 p-0">Certificado</p>
-        <input type="text" class="w-100 justify-content-center">
+        <input type="text" class="w-100" id="certificado">
         <p class="m-0 p-0">Marca</p>
-        <input type="text" class="w-100 justify-content-evenly">
+        <input type="text" class="w-100" id="marca">
         <p class="m-0 p-0">Modelo</p>
-        <input type="text" class="w-100 justify-content-evenly">
+        <input type="text" class="w-100" id="modelo">
         <p class="m-0 p-0">Origen</p>
-        <input type="text" class="w-100 justify-content-evenly">
+        <input type="text" class="w-100" id="origen">
         <p class="m-0 p-0">Descripción</p>
-        <input type="text" class="w-100 justify-content-evenly">
+        <input type="text" class="w-100" id="descripcion">
         <p class="m-0 p-0">Vencimiento</p>
-        <input type="text" class="w-100 justify-content-evenly">
-        <select class="form-select form-select-sm my-3" aria-label="Ejemplo de .form-select-sm">
+        <input type="text" class="w-100" id="vencimiento">
+        <select class="form-select form-select-sm my-3" aria-label="Ejemplo de .form-select-sm" id="gestion">
           <option selected>Seleccione la gestión</option>
           <option value="1">Certificación</option>
           <option value="2">Vigilancia</option>
@@ -114,7 +117,7 @@
           <option value="5">Excepción</option>
           <option value="6">Otros</option>
         </select>
-        <select class="form-select form-select-sm my-3" aria-label="Ejemplo de .form-select-sm">
+        <select class="form-select form-select-sm my-3" aria-label="Ejemplo de .form-select-sm" id="estado">
           <option selected>Selección de estado</option>
           <option value="1">Inicio/Análisis</option>
           <option value="2">Cerificadora</option>
@@ -130,7 +133,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-primary" id="btn1">Agregar</button>
       </div>
         </div>
       </div>
@@ -202,5 +205,6 @@
 </div>
 
   <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
