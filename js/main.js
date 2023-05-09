@@ -28,7 +28,8 @@ function imprimirGestionDOM(){
     gestiones.id = cont;
     document.getElementById("tbody").innerHTML += `
         <tr id="${gestiones.id}">
-        <td>Body 1</td>
+        <td>${gestiones.id}</td>
+        <td>Body 2</td>
         <td>Body 2</td>
         <td>Body 2</td>
         <td>Body 2</td>
@@ -39,17 +40,17 @@ function imprimirGestionDOM(){
         <td>Body 2</td>
         <td>Body 2</td>
         <td class="table-dark">
-            <button type="button" class="btn btn-secondary m-2 p-1" id="btn2">Quitar</button>
+            <button type="button" class="btn btn-secondary m-2 p-1 btn2">Quitar</button>
         </td>
         </tr>`;
-    
-    console.log(gestiones);
 }
 
-let btnRemoverGestion = document.getElementById("btn2");
-btnRemoverGestion.addEventListener("click", removerGestionDOM);
+const tabla1 = document.getElementById('tabla1');
+const tbody = tabla1.querySelector('tbody');
 
-
-function removerGestionDOM (){
-    let 
-}
+tabla1.addEventListener('click', (e) => {    
+    if (e.target.classList.contains('btn2')) {
+        const fila = e.target.closest('tr');
+        fila.remove();
+  }
+});
