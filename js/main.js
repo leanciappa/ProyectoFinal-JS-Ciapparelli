@@ -1,4 +1,5 @@
 gestiones = {};
+let cont=0;
 
 let btnAgregarGestion = document.getElementById("btn1")
 btnAgregarGestion.addEventListener("click", imprimirGestionDOM)
@@ -24,8 +25,9 @@ function imprimirGestionDOM(){
     let estado = document.getElementById("estado").value;
     gestiones.estado = estado
     cont++;
+    gestiones.id = cont;
     document.getElementById("tbody").innerHTML += `
-        <tr id="s>
+        <tr id="${gestiones.id}">
         <td>Body 1</td>
         <td>Body 2</td>
         <td>Body 2</td>
@@ -37,16 +39,17 @@ function imprimirGestionDOM(){
         <td>Body 2</td>
         <td>Body 2</td>
         <td class="table-dark">
-            <button type="button" class="btn btn-secondary m-2 p-1" id="remover">Quitar</button>
+            <button type="button" class="btn btn-secondary m-2 p-1" id="btn2">Quitar</button>
         </td>
         </tr>`;
     
     console.log(gestiones);
 }
 
+let btnRemoverGestion = document.getElementById("btn2");
+btnRemoverGestion.addEventListener("click", removerGestionDOM);
 
-let btnRemover = document.getElementById("click", removerFila)
 
-function removerFila(){
-    let
+function removerGestionDOM (){
+    let 
 }
